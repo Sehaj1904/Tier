@@ -34,15 +34,13 @@ export default function ApplicationHeader({ userData, currentMembershipLevel }: 
 
     setIsProcessingUpgrade(true)
     try {
-      await authenticatedUser.update({
-        publicMetadata: {
-          tier: nextAvailableLevel
-        }
-      })
+      const currentUnsafeMetadata: any = authenticatedUser.unsafeMetadata || {}
 
-      toast({
-        title: "Membership Upgraded!",
-        description: `You've been upgraded to ${membershipDisplayNames[nextAvailableLevel]} membership.`,
+      await authenticatedUser.update({
+        unsafeMetadata: {
+          ...currentUnsafeMetadata,
+          tier: nextAvailableLevel,
+        },
       })
 
       navigationRouter.refresh()

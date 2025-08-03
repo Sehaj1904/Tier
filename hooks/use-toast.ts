@@ -9,7 +9,7 @@ import type {
 } from "@/components/ui/toast"
 
 const TOAST_LIMIT = 1
-const TOAST_REMOVE_DELAY = 1000000
+const TOAST_REMOVE_DELAY = 3000 // remove from DOM ~3 s after showing
 
 type ToasterToast = ToastProps & {
   id: string
@@ -155,6 +155,7 @@ function toast({ ...props }: Toast) {
   dispatch({
     type: "ADD_TOAST",
     toast: {
+      duration: 3000, // auto-close after 3 s
       ...props,
       id,
       open: true,

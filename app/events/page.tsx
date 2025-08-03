@@ -23,7 +23,7 @@ export default async function EventsDiscoveryPage({ searchParams }: EventsPageCo
     redirect("/")
   }
 
-  const userMembershipLevel = (authenticatedUser.publicMetadata?.tier as MembershipLevel) || "free"
+  const userMembershipLevel = (authenticatedUser.unsafeMetadata?.tier as MembershipLevel) || "free"
 
   const userProfileData = {
     firstName: authenticatedUser.firstName,

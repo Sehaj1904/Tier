@@ -52,10 +52,6 @@ export default function EventCard({ eventData, currentUserId }: EventCardProps) 
       }
 
       setUserResponseStatus(responseType)
-      toast({
-        title: "Response Updated",
-        description: `You are now marked as ${responseType.replace("_", " ")} for this event.`,
-      })
     } catch (submissionError) {
       toast({
         title: "Error",
